@@ -10,13 +10,13 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+# gem 'sass-rails', '>= 6'　*不要なためコメントイン
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+# gem 'jbuilder', '~> 2.7' *不要なためコメントイン
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -27,10 +27,23 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# json などをいい感じに整形して表示させてくれる gem
+gem 'active_model_serializers', '~> 0.10.0'
+# トークン形式のユーザー認証（ user authentication )を導入してくれる gem.リクエスト毎に再発行、デバイス・クライアント毎にセッションを保持。
+gem 'devise_token_auth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] ＊不要なためコメントイン
+    # pry を立ち上げてデバッグを行うための gem
+  gem 'pry-byebug' # binding.pry を入れた場所でデバッグが行えるようになる。
+  gem 'pry-rails' # binding.pry で止めたところから next コマンドで1行ずつスキップ実行ができる。
+  gem 'pry-rails' # Cで書かれたRubyのソースコードを表示出来る.show-sourceコマンドを利用出来る様になる
+  # 静的解析ツールrubocop (インデントを入れたら？文字が長すぎない？などとアドバイスくれる警察官)の rails 解析部分。
+  gem 'rubocop-rails' # , require: false は教材にはなかったので一応削除した。
+  # 静的解析ツール rubocop の rspec 解析部分。
+  gem 'rubocop-rspec' # , require: false は教材にはなかったので一応削除した。
+
 end
 
 group :development do
@@ -40,6 +53,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # 現在のスキーマをまとめたコメントを model や rspec, route などのファイルの上部下部に書き出してくれる gem.
+  gem 'annotate'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
