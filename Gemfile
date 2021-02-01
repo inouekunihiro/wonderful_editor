@@ -35,7 +35,7 @@ gem 'devise_token_auth'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] ＊不要なためコメントイン
-    # pry を立ち上げてデバッグを行うための gem
+  # pry を立ち上げてデバッグを行うための gem
   gem 'pry-byebug' # binding.pry を入れた場所でデバッグが行えるようになる。
   gem 'pry-rails' # binding.pry で止めたところから next コマンドで1行ずつスキップ実行ができる。
   gem 'pry-rails' # Cで書かれたRubyのソースコードを表示出来る.show-sourceコマンドを利用出来る様になる
@@ -43,20 +43,18 @@ group :development, :test do
   gem 'rubocop-rails' # , require: false は教材にはなかったので一応削除した。
   # 静的解析ツール rubocop の rspec 解析部分。
   gem 'rubocop-rspec' # , require: false は教材にはなかったので一応削除した。
-
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # 現在のスキーマをまとめたコメントを model や rspec, route などのファイルの上部下部に書き出してくれる gem.
   gem 'annotate'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
