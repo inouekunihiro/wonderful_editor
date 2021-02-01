@@ -1,0 +1,13 @@
+# ファイルを読み込んで全てのコンテナを起動することができる
+
+version: '3.1'
+
+services:
+    database:
+        restart: always
+        image: postgres
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        ports:
+            - "5432:5432"
