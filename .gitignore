@@ -1,6 +1,7 @@
 *.rbc
 capybara-*.html
 .rspec
+#  git管理したい場合は .rspec を .gitignoreから除外
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/*.sqlite3-[0-9]*
