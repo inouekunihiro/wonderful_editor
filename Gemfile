@@ -57,6 +57,7 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
   # 現在のスキーマをまとめたコメントを model や rspec, route などのファイルの上部下部に書き出してくれる gem.
   gem "annotate"
+  gem "rails-erd" # ER図を作成してくれるツール
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
