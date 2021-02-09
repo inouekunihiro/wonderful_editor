@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :article_like do
-    article_id { "" }
-    user_id { "" }
+    user { nil }
+    article { nil }
   end
 end
