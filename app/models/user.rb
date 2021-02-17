@@ -6,11 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  validates :name, presence: true
+
   has_many :articles, dependent: :destroy
   has_many :article_likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
 
 # == Schema Information
