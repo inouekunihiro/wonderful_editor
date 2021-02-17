@@ -19,8 +19,11 @@
 #
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
-    body { "MyText" }
-    user { nil }
+    title { "Title" }
+    body { "A" * 140 }
+    # user { nil }
+    # user { build(:user) } # 金子さんのアドバイスをもらう前の記述
+    # association :user, factory: :user # 過去動画を見た後の記述
+    user
   end
 end

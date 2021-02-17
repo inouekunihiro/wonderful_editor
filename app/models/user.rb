@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   extend Devise::Models
   # Include default devise modules. Others available are:
@@ -7,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  validates :name, presence: true
 
   has_many :articles, dependent: :destroy
   has_many :article_likes, dependent: :destroy

@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+  validates :body, :title, presence: true
+  validates :body, length: { maximum: 140 }
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :article_likes, dependent: :destroy
