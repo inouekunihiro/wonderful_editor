@@ -19,8 +19,11 @@
 #
 FactoryBot.define do
   factory :article do
-    title { "Title" }
-    body { "A" * 140 }
+    # title { Faker::ProgrammingLanguage.name }
+    # body { Faker::ProgrammingLanguage.creator }
+
+    title { Faker::Lorem.word }
+    body { Faker::Lorem.sentence }
     # user { nil }
     # user { build(:user) } # 金子さんのアドバイスをもらう前の記述
     # association :user, factory: :user # 過去動画を見た後の記述
