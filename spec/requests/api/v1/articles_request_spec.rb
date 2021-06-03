@@ -12,7 +12,6 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
     it "記事の一覧が取得できる" do
       # 3.times { create(:article) }
-
       # Article.create!(title: "title", body: "body", user: user)
       # article.save
       subject
@@ -30,7 +29,6 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
   describe "GET /articles/:id" do
     subject { get(api_v1_article_path(article_id)) }
-
 
     context "指定した id の記事が存在する時" do
       let(:article_id) { article.id }
