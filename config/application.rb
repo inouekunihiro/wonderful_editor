@@ -43,6 +43,7 @@ module WonderfulEditor
     end
 
     config.api_only = true
+    config.middleware.use ActionDispatch::Flash # 500 エラー(undefined method 'flash' for#<ActionDispatch::Request> への対処法)
 
     # Don't generate system test files.
     config.generators.system_tests = nil
