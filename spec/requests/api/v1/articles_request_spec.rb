@@ -70,12 +70,47 @@ RSpec.describe "Api::V1::Articles", type: :request do
     end
   end
 
-  #   describe "POST /create" do
-  #     it "記事を新規作成することができる" do
-  #       get "/api/v1/articles/create"
-  #       expect(response).to have_http_status(:success)
-  #     end
-  #   end
+  describe "POST /articles" do
+    subject { post(api_v1_articles_path, params: params) }
+
+    context "ログインユーザーとして適切なパラメーターを送信した時" do
+      let(:params) { { article: attributes_for(:article) } }
+      let(:current_user) { create(:user) }
+
+      # stub
+      before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+      # let(:current_user) (stub)
+
+      it "記事のレコードを作成できる" do
+        aggregate_failures "最後まで通過" do
+          expect { subject }.to change { Article.where(user_id: current_user.id).count }.by(1)
+          res = JSON.parse(response.body)
+          expect(res["title"]).to eq params[:article][:title]
+          expect(res["body"]).to eq params[:article][:body]
+          expect(res["user"]["id"]).to eq current_user[:id]
+          expect(res["user"]["email"]).to eq current_user[:email]
+          expect(res["user"]["name"]).to eq current_user[:name]
+          expect(response).to have_http_status(:ok)
+        end
+      end
+    end
+
+    # context "不適切なパラメーターを送信した時" do
+    #   let(:params) { attributes_for(:article) }
+    #   let(:current_user) { create(:user) }
+
+    #   # stub
+    #   before do
+    #     allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user)
+    #   end
+    #   # let(:current_user) (stub)
+
+    #   fit "記事のレコードが作成できない" do
+    #     # binding.pry
+    #     expect(subject).to raise_error(ActionController::ParameterMissing)
+    #   end
+    # end
+  end
 
   #   describe "PATCH /update" do
   #     it "指定した任意の記事を更新することができる" do
